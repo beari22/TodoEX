@@ -37,6 +37,7 @@ def main():
                 list_todo()
             case "cm" | "done":
                 done_todo(Prompt.ask("(todo number) -> "))
+                console.print(Markdown("# TODO"), justify="center", style="#585858")
             case "help":
                 todo_help()
             case "‌":

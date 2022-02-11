@@ -1,5 +1,7 @@
 import json
+
 from rich.console import Console
+from rich.table import Table
 
 console = Console()
 
@@ -16,11 +18,23 @@ def delete_all_todos() -> int:
         )
         return 1
 
+    if todos == {}:
+        console.print("[red]there are no todos in file[/] ( add one by useing 'add' )")
+        return 1
+
+    todo_list = Table()
+
+    for i in list(todos):
+        todo_list.add_row(i, todos[i]["content"])
+
     for i in list(todos):
         del todos[i]
+
 
     with open("_todos.json", "w") as todos_file:
         new_todos = json.dumps(todos, indent=4)
         todos_file.write(new_todos)
+
+    console.print(todo_list, style="red")
 
     return 0

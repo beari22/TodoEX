@@ -6,7 +6,9 @@ from rich.table import Table
 console = Console()
 
 
-def delete_todo(todo_id: str) -> int:
+def delete_todo(todo_id: str | int) -> int:
+
+    todo_id = str(todo_id)
 
     try:
         with open("_todos.json") as todos_file:

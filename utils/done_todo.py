@@ -60,6 +60,4 @@ def done_todo(todo_id: str | int) -> int:
     sleep(1)
     console.clear()
 
-    console.print(Markdown("# TODO"), justify="center", style="#585858")
-
     return 0
